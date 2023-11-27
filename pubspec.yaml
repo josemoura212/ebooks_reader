@@ -1,0 +1,25 @@
+name: ebooks_reader
+description: "Epub reader"
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  dio: ^5.3.4
+  flutter:
+    sdk: flutter
+  flutter_mobx: ^2.2.0
+  mobx: ^2.2.1
+  vocsy_epub_viewer: ^2.0.0
+
+dev_dependencies:
+  build_runner: ^2.4.6
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+  mobx_codegen: ^2.4.0
+
+flutter:
+  uses-material-design: true
