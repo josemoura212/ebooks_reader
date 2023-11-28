@@ -27,19 +27,55 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  late final _$_nameSearchTextAtom =
+      Atom(name: 'HomeControllerBase._nameSearchText', context: context);
+
+  String get nameSearchText {
+    _$_nameSearchTextAtom.reportRead();
+    return super._nameSearchText;
+  }
+
+  @override
+  String get _nameSearchText => nameSearchText;
+
+  @override
+  set _nameSearchText(String value) {
+    _$_nameSearchTextAtom.reportWrite(value, super._nameSearchText, () {
+      super._nameSearchText = value;
+    });
+  }
+
+  late final _$_homeTypeSelectedAtom =
+      Atom(name: 'HomeControllerBase._homeTypeSelected', context: context);
+
+  HomeType get homeTypeSelected {
+    _$_homeTypeSelectedAtom.reportRead();
+    return super._homeTypeSelected;
+  }
+
+  @override
+  HomeType get _homeTypeSelected => homeTypeSelected;
+
+  @override
+  set _homeTypeSelected(HomeType value) {
+    _$_homeTypeSelectedAtom.reportWrite(value, super._homeTypeSelected, () {
+      super._homeTypeSelected = value;
+    });
+  }
+
   late final _$_bookFavoriteListAtom =
       Atom(name: 'HomeControllerBase._bookFavoriteList', context: context);
 
-  List<String> get bookFavoriteList {
+  List<BookModel> get bookFavoriteList {
     _$_bookFavoriteListAtom.reportRead();
     return super._bookFavoriteList;
   }
 
   @override
-  List<String> get _bookFavoriteList => bookFavoriteList;
+  List<BookModel> get _bookFavoriteList => bookFavoriteList;
 
   @override
-  set _bookFavoriteList(List<String> value) {
+  set _bookFavoriteList(List<BookModel> value) {
     _$_bookFavoriteListAtom.reportWrite(value, super._bookFavoriteList, () {
       super._bookFavoriteList = value;
     });
@@ -51,6 +87,15 @@ mixin _$HomeController on HomeControllerBase, Store {
   @override
   Future<void> getAllBooks() {
     return _$getAllBooksAsyncAction.run(() => super.getAllBooks());
+  }
+
+  late final _$checkBookFavoriteAsyncAction =
+      AsyncAction('HomeControllerBase.checkBookFavorite', context: context);
+
+  @override
+  Future<void> checkBookFavorite(BookModel book, int index) {
+    return _$checkBookFavoriteAsyncAction
+        .run(() => super.checkBookFavorite(book, index));
   }
 
   late final _$addBookFavoriteAsyncAction =
@@ -76,6 +121,42 @@ mixin _$HomeController on HomeControllerBase, Store {
   Future<void> removeBookFavorite(BookModel book) {
     return _$removeBookFavoriteAsyncAction
         .run(() => super.removeBookFavorite(book));
+  }
+
+  late final _$HomeControllerBaseActionController =
+      ActionController(name: 'HomeControllerBase', context: context);
+
+  @override
+  void selectType(HomeType type) {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.selectType');
+    try {
+      return super.selectType(type);
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void filterBookByName(String name) {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.filterBookByName');
+    try {
+      return super.filterBookByName(name);
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void filterBook() {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.filterBook');
+    try {
+      return super.filterBook();
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

@@ -5,12 +5,13 @@ class MigrationV1 extends Migration {
   @override
   void create(Batch batch) {
     batch.execute("""
-      CREATE TABLE books(
-        id Integer not null,
+      CREATE TABLE books (
+        id integer not null,
         title text not null,
-        author text,
-        cover_url text,
-        download_url text
+        author text not null,
+        cover_url text not null,
+        download_url text not null,
+        favorite integer not null
       )
     """);
   }

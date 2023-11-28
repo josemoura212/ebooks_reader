@@ -1,16 +1,20 @@
 part of '../home_page.dart';
 
 class _HomeAppBar extends SliverAppBar {
-  const _HomeAppBar()
+  // ignore: unused_field
+  final HomeController _controller;
+  _HomeAppBar(this._controller)
       : super(
             expandedHeight: 100,
             collapsedHeight: 100,
             elevation: 0,
-            flexibleSpace: const _FlexibleSpace());
+            flexibleSpace: _FlexibleSpace(_controller));
 }
 
 class _FlexibleSpace extends StatelessWidget {
-  const _FlexibleSpace();
+  final HomeController _controller;
+  final _debouncer = Debouncer(milliseconds: 500);
+  _FlexibleSpace(this._controller);
   @override
   Widget build(BuildContext context) {
     final outLineInputBorder = OutlineInputBorder(
@@ -18,21 +22,12 @@ class _FlexibleSpace extends StatelessWidget {
       borderSide: BorderSide(color: Colors.grey[200]!),
     );
     return AppBar(
-      backgroundColor: const Color.fromARGB(255, 98, 101, 110),
+      backgroundColor: Colors.white,
       centerTitle: true,
       title: const Padding(
         padding: EdgeInsets.only(bottom: 20.0),
         child: Text("E-Books Reader"),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.favorite,
-            color: Colors.red,
-          ),
-        )
-      ],
       flexibleSpace: Stack(
         children: [
           Container(
@@ -47,7 +42,11 @@ class _FlexibleSpace extends StatelessWidget {
                 elevation: 4,
                 borderRadius: BorderRadius.circular(30),
                 child: TextFormField(
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    _debouncer.run(() {
+                      _controller.filterBookByName(value);
+                    });
+                  },
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,

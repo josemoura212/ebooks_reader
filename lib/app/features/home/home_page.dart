@@ -1,3 +1,4 @@
+import 'package:ebooks_reader/app/core/helpers/debouncer.dart';
 import 'package:ebooks_reader/app/core/ui/extensions/size_screen_extensions.dart';
 import 'package:ebooks_reader/app/core/ui/extensions/theme_extension.dart';
 import 'package:ebooks_reader/app/features/home/home_controller.dart';
@@ -23,18 +24,19 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await _controller.getAllBooks();
       await _controller.getBookFavorite();
+      await _controller.getAllBooks();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
-            const _HomeAppBar(),
+            _HomeAppBar(_controller),
           ];
         },
         body: _HomeTab(_controller),

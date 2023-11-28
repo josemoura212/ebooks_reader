@@ -7,7 +7,7 @@ import 'package:synchronized/synchronized.dart';
 
 class SqliteConnectionFactory {
   static const _version = 1;
-  static const _databaseName = "CUIDAPET_LOCAL_DB";
+  static const _databaseName = "EBOOKS_READER_LOCAL_DB";
   static SqliteConnectionFactory? _instance;
 
   Database? _db;
