@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_mobx: ^2.2.0
+  flutter_screenutil: ^5.9.0
+  google_fonts: ^6.1.0
   mobx: ^2.2.1
   shared_preferences: ^2.2.2
   vocsy_epub_viewer: ^2.0.0

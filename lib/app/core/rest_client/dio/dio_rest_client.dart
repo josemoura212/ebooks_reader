@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ebooks_reader/app/core/constantes/constants.dart';
+import 'package:ebooks_reader/app/core/helpers/constants.dart';
 import 'package:ebooks_reader/app/core/rest_client/rest_client.dart';
 import 'package:ebooks_reader/app/core/rest_client/rest_client_exception.dart';
 import 'package:ebooks_reader/app/core/rest_client/rest_client_response.dart';

@@ -1,24 +1,44 @@
+import 'package:ebooks_reader/app/core/ui/extensions/size_screen_extensions.dart';
 import 'package:ebooks_reader/app/core/ui/extensions/theme_extension.dart';
+import 'package:ebooks_reader/app/features/home/home_controller.dart';
+import 'package:ebooks_reader/app/models/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+part 'widgets/home_appbar.dart';
+part 'widgets/home_tab.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   static const nameRoute = "/";
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final _controller = HomeController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _controller.getAllBooks();
+      await _controller.getBookFavorite();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Home Page',
-          style: TextStyle(color: Colors.white),
-        ),
-        elevation: 8,
-        shadowColor: context.primaryColor,
-        backgroundColor: const Color.fromARGB(255, 13, 13, 25),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return <Widget>[
+            const _HomeAppBar(),
+          ];
+        },
+        body: _HomeTab(_controller),
       ),
-      body: Container(),
     );
   }
 }
