@@ -9,11 +9,12 @@ class UiConfig {
   static ThemeData get theme => ThemeData(
         useMaterial3: true,
         primaryColor: const Color.fromARGB(255, 26, 207, 124),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 98, 101, 110),
+        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 26, 207, 124),
         ),
         appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 13, 13, 25),
           titleTextStyle: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -30,6 +31,16 @@ class UiConfig {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(160, 60),
+            textStyle: const TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
