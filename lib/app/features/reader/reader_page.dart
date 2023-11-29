@@ -38,35 +38,37 @@ class _ReaderPageState extends State<ReaderPage> {
         children: [
           _ReaderHeader(book: book),
           const SizedBox(height: 45),
-          Observer(builder: (_) {
-            return ElevatedButton(
-              onPressed: () async {
-                if (filePath == "") {
-                  await _controller.download(book.downloadUrl, book.title);
-                } else {
-                  VocsyEpub.setConfig(
-                    themeColor: Colors.teal,
-                    identifier: book.title,
-                    scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-                    allowSharing: true,
-                    enableTts: true,
-                    nightMode: false,
-                  );
-                }
-                _controller.loading
-                    ? Container()
-                    : VocsyEpub.open(_controller.path);
-              },
-              child: _controller.loading
-                  ? const CircularProgressIndicator()
-                  : const Text(
-                      "Ler livro",
-                      style: TextStyle(
-                        color: Colors.black,
+          Observer(
+            builder: (_) {
+              return ElevatedButton(
+                onPressed: () async {
+                  if (filePath == "") {
+                    await _controller.download(book.downloadUrl, book.title);
+                  } else {
+                    VocsyEpub.setConfig(
+                      themeColor: Colors.teal,
+                      identifier: book.title,
+                      scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+                      allowSharing: true,
+                      enableTts: true,
+                      nightMode: true,
+                    );
+                  }
+                  _controller.loading
+                      ? Container()
+                      : VocsyEpub.open(_controller.path);
+                },
+                child: _controller.loading
+                    ? const CircularProgressIndicator()
+                    : const Text(
+                        "Ler livro",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-            );
-          }),
+              );
+            },
+          ),
         ],
       ),
     );
