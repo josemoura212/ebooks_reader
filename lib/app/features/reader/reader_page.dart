@@ -51,7 +51,6 @@ class _ReaderPageState extends State<ReaderPage> {
                       scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
                       allowSharing: true,
                       enableTts: true,
-                      nightMode: true,
                     );
                   }
                   _controller.loading

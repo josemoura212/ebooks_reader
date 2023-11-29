@@ -1,7 +1,7 @@
 name: ebooks_reader
 description: "Epub reader"
 publish_to: "none"
-version: 0.1.0
+version: 1.0.0+1
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
@@ -24,11 +24,21 @@ dependencies:
   vocsy_epub_viewer: ^2.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   build_runner: ^2.4.6
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
   mobx_codegen: ^2.4.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/icon.png"
 
 flutter:
   uses-material-design: true
