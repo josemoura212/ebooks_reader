@@ -139,33 +139,39 @@ class _HomeBookGridItemWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 3.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                book.coverUrl,
-                height: 194,
-                width: 134,
-                fit: BoxFit.fill,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
+              child: InkWell(
+                borderRadius: BorderRadius.circular(12),
+                onTap: () {
+                  Navigator.pushNamed(context, '/reader', arguments: book);
+                },
+                child: Image.network(
+                  book.coverUrl,
+                  height: 194,
+                  width: 134,
+                  fit: BoxFit.fill,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
 
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
-                    ),
-                  );
-                },
-                errorBuilder: (context, child, stackTrace) {
-                  return Container(
-                    color: Colors.white,
-                    height: 194,
-                    width: 134,
-                    child: const Center(
-                      child: Text("Erro ao carregar imagem"),
-                    ),
-                  );
-                },
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                            : null,
+                      ),
+                    );
+                  },
+                  errorBuilder: (context, child, stackTrace) {
+                    return Container(
+                      color: Colors.white,
+                      height: 194,
+                      width: 134,
+                      child: const Center(
+                        child: Text("Erro ao carregar imagem"),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),

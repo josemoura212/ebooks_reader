@@ -168,4 +168,21 @@ class DioRestClient implements RestClient {
       ),
     );
   }
+
+  @override
+  Future<RestClientResponse<T>> download<T>(
+    String urlPath,
+    String savePath,
+  ) async {
+    try {
+      final response = await _dio.download(
+        urlPath,
+        savePath,
+        deleteOnError: true,
+      );
+      return _dioResponseConverter(response);
+    } on DioException catch (e) {
+      throw _throwRestClientException(e);
+    }
+  }
 }

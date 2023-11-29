@@ -42,4 +42,6 @@ abstract class RestClient {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
   });
+
+  Future<RestClientResponse<T>> download<T>(String urlPath, String savePath);
 }
