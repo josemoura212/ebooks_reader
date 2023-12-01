@@ -1,3 +1,3 @@
 abstract class ReaderRepository {
-  Future<String> downloadEpub(String urlPath, String name);
+  Future<void> downloadEpub(String urlPath, String path);
 }

@@ -1,11 +1,11 @@
-import 'package:ebooks_reader/app/repositories/reader/reader_repository_impl.dart';
+import 'package:ebooks_reader/app/services/reader/reader_service_impl.dart';
 import 'package:mobx/mobx.dart';
 part 'reader_controller.g.dart';
 
 class ReaderController = ReaderControllerBase with _$ReaderController;
 
 abstract class ReaderControllerBase with Store {
-  final _readerService = ReaderRepositoryImpl();
+  final _readerService = ReaderServiceImpl();
 
   @readonly
   var _loading = false;
