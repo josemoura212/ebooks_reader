@@ -3,6 +3,7 @@
 - [Descrição](#Descrição)
 - [Recursos](#Recursos)
 - [Instalação](#Instalação)
+- [Download](#Download)
 
 ## Descrição
 
@@ -31,3 +32,7 @@ flutter pub get
 
 Assim que terminar de baixar todas as dependências pode executar o projeto. 
 
+
+### Download
+
+[Dowload apk](https://github.com/josemoura212/ebooks_reader/releases/tag/1.0.0)
